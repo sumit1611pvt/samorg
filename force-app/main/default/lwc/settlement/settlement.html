@@ -1,0 +1,52 @@
+<template>
+    <lightning-tabset>
+        <lightning-tab label="Item One">
+            <lightning-progress-indicator current-step={stepValue} type="base" variant="base">
+                <lightning-progress-step label="Step 1" value="1"></lightning-progress-step>
+                <lightning-progress-step label="Step 2" value="2"></lightning-progress-step>
+                <lightning-progress-step label="Step 3" value="3"></lightning-progress-step>
+            </lightning-progress-indicator>
+           
+            <div class="slds-m-top_medium slds-m-bottom_x-large">
+                <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+                    STEP FORM
+                </h2>
+        
+                <template if:true={firstPage}>
+                <!-- Default/basic -->
+                <div class="slds-p-around_medium lgc-bg">
+                    <lightning-input type="text" label="Your Name" value={clientName} onchange={nameInpChange}></lightning-input>
+                </div>
+            </template>
+
+            <template if:true={secondPage}>
+                <!-- Default/basic -->
+                <div class="slds-p-around_medium lgc-bg">
+                    <lightning-input type="text" label="Your Company Name" value={companyName} onchange={companyInpChange}></lightning-input>
+                </div>
+            </template>
+
+            <template if:true={thirdPage}>
+                <!-- Default/basic -->
+                <div class="slds-p-around_medium lgc-bg">
+                    <lightning-input type="text" label="Your Email" value={emailId} onchange={emailInpChange}></lightning-input>
+                </div>
+            </template>
+
+            </div>
+            
+                <lightning-button variant="brand" label="Next" title="Next" onclick={handleClickOfNext} class="slds-m-left_x-small" disabled={thirdPage}></lightning-button>
+            
+            <template if:true={thirdPage}>
+        <lightning-button variant="success" label="Save" title="Save" onclick={handleClickOfSave} class="slds-m-left_x-small" ></lightning-button>
+        </template>
+    </lightning-tab>
+        <lightning-tab label="Item Two" title="2nd tab extended title">
+            Two Content !
+        </lightning-tab>
+        <lightning-tab label="Item Three">
+            Three Content !
+        </lightning-tab>
+    </lightning-tabset>
+    
+</template>

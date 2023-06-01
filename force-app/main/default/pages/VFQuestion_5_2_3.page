@@ -1,0 +1,33 @@
+<apex:page controller="Search_Account" showHeader="false" sidebar="false">
+        <script>
+    function closePopup() {          
+        window.close();
+    }       
+    </script>
+    <apex:form id="theform">        
+        <apex:pageBlock title="Search" id="block1">            
+            <apex:pageBlockSection id="blocksection1">
+                <apex:pageBlockSectionItem id="blocksectionitem1">
+                    <apex:outputLabel >Name : </apex:outputLabel>
+                    <apex:inputText value="{!name}" id="n_m" />                    
+                </apex:pageBlockSectionItem>                
+                <apex:pageBlockSectionItem >
+                    <apex:commandButton value="Search" action="{!performSearch}"/>                  
+                </apex:pageBlockSectionItem>        
+            </apex:pageBlockSection>    
+        </apex:pageBlock>
+        <apex:pageBlock title="Results" rendered="{!recordsFound}" id="block2">
+            <apex:dataTable value="{!accounts}" var="acc" border="2" cellpadding="2" width="100%">     
+                <apex:column >
+                    <apex:facet name="header">Name</apex:facet>                    
+                    <apex:commandLink onclick="window.opener.fillVal('{!acc.Id}','{!acc.Name}');" oncomplete="closePopup();">{! acc.Name}                                          
+                    </apex:commandLink>
+                </apex:column>   
+            </apex:dataTable>           
+        </apex:pageBlock>        
+        <apex:pageBlock title="Message" rendered="{!nothingFound}">
+            <apex:outputLabel >No records found!</apex:outputLabel>
+        </apex:pageBlock>
+    </apex:form>
+    
+</apex:page>

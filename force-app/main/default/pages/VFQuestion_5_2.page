@@ -1,0 +1,35 @@
+<apex:page controller="Search_Account">
+    <script>
+    function openPopup(page,param) {
+        window.open(page+'?param='+param,'_blank', 'toolbar=yes, scrollbars=yes, resizable=yes, top=500, left=500, width=400, height=400')
+    }
+    function fillVal(vi,vn) {
+        document.getElementById('{!$Component.form_id.block_id.block_id_section.theaccn}').value = vn; 
+        document.getElementById('{!$Component.form_id.block_id.block_id_section.theacci}').value = vi; 
+    }   
+    function clearVal() {
+        document.getElementById('{!$Component.form_id.block_id.block_id_section.theaccn}').value = ''; 
+        document.getElementById('{!$Component.form_id.block_id.block_id_section.theacci}').value = ''; 
+        document.getElementById('{!$Component.form_id.block_id.block_id_section.fn}').value = ''; 
+        document.getElementById('{!$Component.form_id.block_id.block_id_section.ln}').value = ''; 
+    }
+    </script>
+    <apex:form id="form_id" >        
+        <apex:pageBlock title="Insert Contact" id="block_id"> 
+            <apex:outputPanel id="msg">
+                <apex:pageMessage severity="Error" summary="Last Name can not be blank!" strength="2" rendered="{! check}" ></apex:pageMessage>
+            </apex:outputPanel>
+            <apex:pageBlockSection id="block_id_section" columns="2">                
+                <apex:inputText label="First Name" value="{!firstName}" id="fn" />
+                <apex:inputText label="Account" value="{!accName}" id="theaccn"></apex:inputText>   
+                <apex:inputText label="Last Name" value="{!lastName}" id="ln" />
+                <apex:commandbutton onclick="openPopup('{!$Page.Search_Account}','null'); return false;" value="Account" />
+                <apex:inputHidden value="{!accId}" id="theacci"/>
+            </apex:pageBlockSection>   
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!saveRecord}" oncomplete="clearVal();" reRender="msg" >  
+                </apex:commandButton>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>           
+</apex:page>

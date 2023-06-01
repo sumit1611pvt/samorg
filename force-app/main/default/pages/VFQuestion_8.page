@@ -1,0 +1,22 @@
+<apex:page controller="Scrollable_List" >
+    <apex:form >
+      <apex:pageBlock title="Account List" >
+          <apex:outputPanel layout="block" style="overflow:auto;width:250px;height:250px" >
+              <apex:dataTable value="{!accountList}" var="acc" align="Left" border="2px" cellspacing="10px" cellpadding="10px"
+                              bgcolor="LightGreen">
+              
+                  <apex:column headerValue="Name" value="{!acc.name}" style="padding-bottom :5px;width:40%" />
+                  <apex:column headerValue="AccountID" value="{!acc.id}" style="padding-bottom :5px;width:40%"  />
+                  
+              
+              </apex:dataTable>
+          
+              
+          </apex:outputPanel>
+        
+        
+        </apex:pageBlock>
+    
+    
+    </apex:form>
+</apex:page>

@@ -1,0 +1,13 @@
+<apex:page Controller="Datalist_Record">
+    <apex:form >
+        <apex:pageBlock title="Account Records" id="pb_id"  >
+            <apex:dataList value="{! Accounts}" var="ac" rendered="true" style="border-style: solid;"  > 
+                <apex:outputLabel value="{!ac.Name}" ></apex:outputLabel>
+            </apex:dataList>
+            <apex:commandButton action="{! Next}" value="Next" reRender="pb_id" disabled="{! Button_Next}"/>
+            <apex:commandButton action="{! Previous}" value="Previous" reRender="pb_id" disabled="{! Button_Previous}" />
+            <apex:commandButton action="{! First}" value="First" reRender="pb_id" disabled="{! Button_Previous}"/>
+            <apex:commandButton action="{! Last}" value="Last" reRender="pb_id"  disabled="{! Button_Next}" />
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

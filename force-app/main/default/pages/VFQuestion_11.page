@@ -1,0 +1,15 @@
+<apex:page standardController="opportunity" extensions="oppoHide" >
+    
+    <apex:form >
+    <apex:pageBlock >
+        <apex:outputPanel id="pId" style="width:100%"  >
+        <apex:commandButton value="test" rendered="{!IsHide}"  />
+        
+        </apex:outputPanel>
+        <apex:inputField value="{!opportunity.stageName}" >
+        <apex:actionSupport event="onchange" action="{!checkopp}" reRender="pId" />
+        </apex:inputField>
+        </apex:pageBlock>
+    </apex:form>
+    
+</apex:page>

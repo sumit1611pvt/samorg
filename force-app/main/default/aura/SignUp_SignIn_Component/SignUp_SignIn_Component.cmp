@@ -1,0 +1,85 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" Controller="SignUp_SignIn_ApexController" access="global" >
+    <aura:attribute name="usernameLabel" type="String" />
+    <aura:attribute name="passwordLabel" type="String" />
+    <aura:attribute name="errorMsg" type="String" default="test"/>
+    <aura:attribute name="isSignUp" type="boolean" default="false"/>
+    <aura:attribute name="isSignIn" type="boolean" default="true"/>
+    <aura:attribute name="successMsg" type="String" />
+    <aura:attribute name="loginSuccess" type="boolean" default="false"/>
+    <aura:attribute name="name" type="String" />
+    <aura:attribute name="userCreatedSuccess" type="boolean" default="false"/>
+    <aura:attribute name="isError" type="boolean" default="false"/>
+    <aura:attribute name="usersEmail" type="String" />
+    <aura:attribute name="backgroundImageURL" type="String" default=""/>
+    
+    
+      <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>   
+    
+    <div id="mainDiv" class="loading" style="background:white">
+        <span  style="font-weight:800;font-size:16px;">Sign-Up/Log-In</span>
+        <hr/>
+        <div class="slds-grid slds-wrap" style="margin-left: 10px;margin-right: 10px;">
+            <div class="slds-col slds-size_3-of-3">
+            <aura:if isTrue="{!v.isError}">
+                <span style="background:yellow;">
+                    {!v.errorMsg}  
+                </span>
+            </aura:if>
+            <aura:if isTrue="{!v.loginSuccess}">
+                <span style="background:yellow;">
+                    {!v.successMsg} to the  new world ! Login Success. 
+                </span>
+            </aura:if>
+            
+            <aura:if isTrue="{!v.userCreatedSuccess}">
+                <span style="background:yellow;">
+                    {!v.successMsg}  
+                </span>
+                <lightning:button variant="neutral" label="Sign In Here" title="sign in" onclick="{!c.signInTextClicked}" class="slds-m-left_x-small" />
+            </aura:if>
+            </div>
+            
+             <div class="slds-col slds-size_3-of-3">
+            <aura:if isTrue="{!v.isSignIn}">
+                <lightning:input name="un" label="User Name" placeholder="Username" value="{!v.usernameLabel}" required="true"/>
+                <br/>
+                <lightning:input aura:id="password" type="password" label="Password" name="pswd" placeholder="Enter Password" required="true"/>
+                <br/>
+                
+                <lightning:button variant="brand" label="Login" title="login" onclick="{!c.signIn}" class="slds-m-left_x-small"/>
+                <lightning:button variant="neutral" label="New Customer-Sign Up Here" title="New Customer-Sign Up Here" onclick="{!c.signUpButtonClicked}" class="slds-m-left_x-small"/>
+               
+                <br/>
+                
+                
+            </aura:if>
+            
+            <aura:if isTrue="{!v.isSignUp}">
+                <lightning:input name="Name" label="Name" placeholder="Name" value="{!v.name}" required="true"/>
+                <br/>
+                <lightning:input name="un" label="User Name" placeholder="Enter Username" value="{!v.usernameLabel}" required="true"/>
+                <br/>
+                <lightning:input name="email" label="Email" placeholder="Enter email" value="{!v.usersEmail}" required="true"/>
+                <br/>
+                
+                
+                <lightning:input  aura:id="passwordInput" type="password" label="Password" name="pswd" placeholder="Enter New Password" value="{!v.passwordLabel}" required="true"/>
+                <br/>
+                <div id="abc" style="font-colr:red;">
+                    </div>
+                
+                <lightning:button variant="brand" label="Sign Up" title="sign up" onclick="{!c.signUp}" class="slds-m-left_x-small" />
+                <lightning:button variant="neutral" label="Sign In Here" title="sign in" onclick="{!c.signInTextClicked}" class="slds-m-left_x-small" />
+                
+                <br/>
+            </aura:if> 
+            </div>
+            
+            
+            <div class="slds-col slds-size_1-of-1">
+                &nbsp;
+            </div>
+        </div >  
+    </div>
+   
+</aura:component>

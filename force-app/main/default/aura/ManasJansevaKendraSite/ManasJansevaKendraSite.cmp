@@ -1,0 +1,7 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:attribute name="textColor" type="string" default="black"/>
+   <div id="mainDiv">
+    <h2>Welcome to Manas Janseva kendra</h2>
+    
+    </div>
+</aura:component>

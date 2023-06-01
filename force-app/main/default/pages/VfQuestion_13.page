@@ -1,0 +1,65 @@
+<apex:page controller="countAll" >
+    <apex:form >
+    <apex:pageBlock >
+ <apex:pageBlockSection columns="1"> 
+       
+            <div class="master" style="width:100%;height:20px;left;border:2px solid black;" >
+                
+          
+         <div class="col-md-3" style="width:25%;float:left;">
+               <h1>Account Name  </h1>
+            </div> 
+               
+            <div class="col-md-3" style="width:25%;float:left;">
+               <h1>Number of Contacts  </h1>
+            </div>   
+            <div class="col-md-3" style="width:25%;float:left;">
+               <h1>Number of Opportunities  </h1>
+            </div>   
+            <div class="col-md-3" style="width:25%;float:left;">
+
+  <h1>        Number of Opportunity Line Items </h1>
+            </div>   
+                  </div>
+
+        
+        
+        </apex:pageBlockSection>   
+        
+       
+        
+   
+        
+        <apex:pageBlockSection columns="5"  >
+            
+        <apex:dataTable value="{!Accounts}" var="ac" cellpadding="5px" cellspacing="2px"  >
+        <apex:column >
+            <apex:commandLink value="{!ac.name}"  action="/{!ac.id}" reRender="none" />
+            </apex:column>
+          
+        </apex:dataTable>
+            
+            
+          <apex:dataTable value="{!contacts}" var="con" cellpadding="5px" cellspacing="2px"  >
+              <apex:column value="{!con}" >
+                 
+            </apex:column>
+            
+            </apex:dataTable>  
+            
+            <apex:dataTable value="{!opportunity}" var="op" cellpadding="5px" cellspacing="2px">
+                <apex:column value="{!op}" />
+            
+            </apex:dataTable>
+            
+            <apex:dataTable value="{!Olies}" var="oli" cellpadding="5px" cellspacing="2px" >
+                <apex:column value="{!oli}" />
+            </apex:dataTable>
+           
+      </apex:pageBlockSection>        
+     
+        
+        
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

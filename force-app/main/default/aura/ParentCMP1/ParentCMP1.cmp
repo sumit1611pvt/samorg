@@ -1,0 +1,15 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+   <aura:attribute name="messageFromChildEvent" type="String"/>
+   <aura:attribute name="numOfEvents" type="Integer" default="0"/>
+ 
+   <!-- Note that name="cmpEvent" in aura:registerEvent
+    in ceNotifier.cmp -->
+   <aura:handler name="cmpEvent" event="c:componentEventEx" action="{!c.handleCE}"/>
+ <div style="background:white;">
+   <!-- handler contains the notifier component -->
+   <c:childCMP1/>
+  
+   <p>Msg: {!v.messageFromChildEvent}</p>
+   <p>Number of events: {!v.numOfEvents}</p>
+    </div>
+</aura:component>

@@ -1,0 +1,17 @@
+<apex:page >
+    <apex:includeLightning />
+    
+    <div id="lightning" />
+    welcome
+    
+    <script>
+    $Lightning.use("c:ManasJansevaKendraSiteApp", function() {
+        $Lightning.createComponent("c:ManasJansevaKendraSite",
+                                   {textColor : "Red"},
+                                   "lightning", 
+                                   function(cmp) {
+                                       console.log('Component created, do something cool here');
+                                   });
+    });
+    </script>
+</apex:page>

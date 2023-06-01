@@ -1,0 +1,29 @@
+<apex:page Controller="Account_details" >
+    
+    <apex:form >
+        <apex:pageblock title="Account Details">
+            
+            <apex:pageBlockSection columns="4" >
+                <table >
+                    <tr>
+                        
+                        <td>    <apex:commandButton action="{!refreshList}" value="Refresh"  rerender="table" style="float:right"  /> </td>
+                        <td>    <apex:commandButton action="{!SortByAscending}" value="Sort Ascending" reRender="table" style="float:left" /> </td>
+                    </tr>
+                </table>
+            </apex:pageBlockSection>
+            
+            <apex:outputPanel id="table" style="overflow:auto;width:1000px;height:300px" layout="block" >  
+                <apex:dataTable value="{!acclist}" var="acc"  width="90%" align="center" bgcolor="Lightyellow" title="Accounts List"
+                                cellpadding="5px" cellspacing="20px" border="5px" >
+                    
+                    <apex:column headerValue="AccountId" value="{!acc.Id}"  />
+                    
+                    <apex:column headerValue="Account Name" value="{!acc.Name}"/>
+                    <apex:column headerValue="Account Phone" value="{!acc.Phone}"/>
+                </apex:dataTable>
+            </apex:outputPanel>  
+            
+        </apex:pageblock>
+    </apex:form>
+</apex:page>

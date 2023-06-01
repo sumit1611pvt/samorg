@@ -1,0 +1,8 @@
+<aura:component controller="D3ChartsController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+<header label="D3 Charts" ></header>
+
+
+<ltng:require scripts="{!join(',',
+    $Resource.d3Libraries + '/jquery.min.js',
+    $Resource.d3Libraries + '/d3.v4.min.js')}" afterScriptsLoaded="{!c.initD3Charts}"/>
+</aura:component>

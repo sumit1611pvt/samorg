@@ -1,0 +1,19 @@
+<aura:component controller="FirstComponent_Apex_Controller" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="contactList" type="List" description="" access="public"/>
+    
+    
+    <!-- Handler section start -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!-- Handler section end -->
+    
+    <div class="mainDiv" >
+         <lightning:select name="select1" label="Contacts" required="false" >
+        <option value="">choose one...</option>
+             <aura:iteration items="{!v.contactList}" var="con" >
+                 <option value="{!con.Id}" label="{!con.Name}" />
+                 </aura:iteration>
+       
+    </lightning:select>
+    
+    </div>
+</aura:component>

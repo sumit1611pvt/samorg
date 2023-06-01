@@ -1,0 +1,21 @@
+<apex:page id="SearchAccount" showHeader="false" sidebar="false">
+    <script>
+    var newWin = null; 
+    function openLookupPopup(field) {
+        var url = "/apex/Q10?fieldId="+field;
+        newpage = window.open(url, 'Popup', 'height=500,width=600,left=100,top=100,resizable=no,scrollbars=yes,toolbar=no,status=no');
+        if (window.focus) {
+            newpage.focus();
+        }
+        return false;
+    }
+    </script>
+    <apex:form > 
+        <apex:pageBlock title="My custom LookUp">
+        <apex:outputPanel >
+            <apex:inputText id="accnameId"/>
+            <apex:commandButton value="Lookup" onclick="openLookupPopup('{!$Component.accnameId}');"/>
+        </apex:outputPanel>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

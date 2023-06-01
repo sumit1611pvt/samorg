@@ -1,0 +1,120 @@
+<aura:component controller="OpenWeatherController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute type="list" name="response" default="" access="global"/>
+    <aura:attribute name="mapMarkers" type="Object[]"/>
+    <!-- All temp deatils -->
+    <aura:attribute name="temp" type="double"/>
+     <aura:attribute name="feels_like" type="String"/>
+     <aura:attribute name="temp_min" type="String"/>
+     <aura:attribute name="temp_max" type="String"/>
+     <aura:attribute name="pressure" type="String"/>
+     <aura:attribute name="humidity" type="String"/>
+     <aura:attribute name="sea_level" type="String"/>
+     <aura:attribute name="grnd_level" type="String"/>
+    
+    <!-- All wind deatils -->
+    <aura:attribute name="speed" type="String"/>
+    <aura:attribute name="deg" type="String"/>
+    <aura:attribute name="gust" type="String"/>
+    
+    <!-- All cloud deatils -->
+    <aura:attribute name="all_clouds" type="String"/>
+    
+    <!-- All sys deatils -->
+     <aura:attribute name="type" type="String"/>
+    <aura:attribute name="id" type="String"/>
+    <aura:attribute name="country" type="String"/>
+    <aura:attribute name="sunrise" type="String"/>
+    <aura:attribute name="sunset" type="String"/>
+    
+    <aura:attribute name="timezone" type="string"/>
+    
+    <!-- basic weather deatils -->
+    <aura:attribute name="id_main" type="string"/>
+    <aura:attribute name="main_weather" type="string"/>
+    <aura:attribute name="description" type="string"/>
+    
+     <aura:attribute name="backgroundColor" type="string"/>
+     <aura:attribute name="backgroundImageURL" type="string"/>
+     <aura:attribute name="tempratureImageURL" type="string"/>
+    
+    
+    
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    
+    <div id="container" class="slds-box" style="background:white">
+        
+        <lightning:map
+                       mapMarkers="{! v.mapMarkers }" />
+        
+        <lightning:button variant="destructive" type="button" label="Get Weather" onclick="{!c.doInit}"/>
+        <hr></hr>
+        
+        <div style="{!'position: relative; height: 30vh; background:' + v.backgroundColor + ' url(' + v.backgroundImageURL +') no-repeat;background-position: center;background-size: cover;'}">
+
+
+        <div class="slds-grid slds-wrap" style="">
+            <div class="slds-col slds-size--1-of-3 slds-m-around--x-small">
+            <lightning:card  footer="Card Footer" title="Temprature Details">
+                     <!--   <div style="{!'position: relative; height: 30px; background:' + v.backgroundColor + ' url(' + v.tempratureImageURL +') no-repeat;background-position: initial;background-size: contain;'}"> -->
+                
+                <div class="slds-grid slds-wrap" style="">
+                    <div class="slds-col slds-size--1-of-3 ">
+                    Current Temp
+                   </div> 
+                    <div class="slds-col slds-size--1-of-3 ">
+                    Feels Like
+                   </div> 
+                            <div class="slds-col slds-size--1-of-3 ">
+                    Max Temp
+                   </div> 
+                            
+                    
+                    <div class="slds-col slds-size--1-of-3 ">
+                        <ui:outputNumber value="{!v.temp}" format=""/>
+                     °C
+                   </div> 
+                     <div class="slds-col slds-size--1-of-3 ">
+                         <ui:outputNumber value="{!v.feels_like}"/>
+                     °C
+                   </div>
+                            <div class="slds-col slds-size--1-of-3 ">
+                   {!v.temp_max} °C
+                   </div> 
+                     <div class="slds-col slds-size--3-of-3 ">
+                   &nbsp;
+                   </div> 
+                    <div class="slds-col slds-size--1-of-3 ">
+                    Min Temp
+                   </div> 
+                    <div class="slds-col slds-size--1-of-3 ">
+                   &nbsp;
+                   </div> 
+                    <div class="slds-col slds-size--1-of-3 ">
+                   &nbsp;
+                   </div> 
+                            <div class="slds-col slds-size--1-of-3 ">
+                     {!v.temp_min} °C
+                   </div> 
+                </div>
+               <!--  </div> -->
+            </lightning:card>
+            </div>
+            <div class="slds-col slds-size--1-of-3 slds-m-around--x-small">
+            <lightning:card variant="Narrow" footer="Card Footer" title="Wind Details">
+                
+                <p class="slds-p-horizontal_small">
+                    Card Body (custom component)
+                    <aura:iteration items="{!v.response}" var="item">
+                     {!v.response} - {!item.name}
+                        </aura:iteration>
+                </p>
+            </lightning:card>
+            </div>
+          
+        </div>
+            </div>
+        
+    </div>
+</aura:component>

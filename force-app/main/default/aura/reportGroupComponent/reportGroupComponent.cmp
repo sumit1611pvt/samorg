@@ -1,0 +1,12 @@
+<aura:component implements="flexipage:availableForAllPageTypes" controller="ReportsUtil">
+    <!-- include chartjs added as a static repource, 
+	onload of the js invoke controller method to create the chart-->
+    <ltng:require scripts="{!$Resource.ChartJs}" 
+                  afterScriptsLoaded="{!c.afterScriptsLoaded}" />
+    <div class="slds-grid slds-wrap slds-grid--pull-padded ">
+        <div class="slds-p-horizontal--small slds-size--1-of-3 slds-m-top--medium">
+            <!-- chart plotted in the canvas -->
+            <canvas aura:id="chart" height="700" width="1000" ></canvas>
+        </div>
+    </div>	
+</aura:component>

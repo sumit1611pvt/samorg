@@ -1,0 +1,21 @@
+<apex:page Controller="AccountListDetails" renderAs="PDF" applyBodyTag="false">
+    <apex:form >
+        <apex:pageBlock title=" All Accounts Details"  >
+            
+          <apex:pageBlockTable value="{!accountList}" var="a" border="1px" cellspacing="8px" align="center"
+                               cellpadding="3px" columnsWidth="50%,15% 25%50%" style="background:#F9D2E0;color:#000303" > 
+   
+                
+                <apex:column value="{!a.Name}" style="background:#FCFC8F;color:#000303;"  />
+                
+                <apex:column value="{!a.NumberOfEmployees}" style="background:#B9B4FA;color:#000303;" />
+                
+              <apex:column value="{!a.CreatedByID}" style="background:#B6FCAA; !important;" />
+                
+                <apex:column value="{!a.CreatedDate}" style="background:#ABFAF7;color:#000303;"/>
+                
+            </apex:pageblockTable> 
+                
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

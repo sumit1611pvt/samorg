@@ -1,0 +1,7 @@
+<apex:page standardController="opportunity" extensions="oppdate">
+    <apex:sectionHeader title="opportunity close date "/>
+        
+        <apex:outputpanel rendered="{!flag}"  >you have closed it near by </apex:outputpanel>
+        
+  
+</apex:page>

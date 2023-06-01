@@ -1,0 +1,27 @@
+<apex:page standardController="Account">
+    <script>
+    function myFunction() {
+        var accountName = document.getElementById('{!$Component.theform.theblock.theblocksection.accName}').value;
+          var accountphone = document.getElementById('{!$Component.theform.theblock.theblocksection.PhoneNo}').value;
+        var check1 = confirm(" Do you really want to insert the new record with Name :   "+accountName );  
+                var check2 = confirm(" Do you really want to insert the new record with phone :   "+accountphone );        
+
+        if (check1 == true && check2==true) {            
+            return true;
+        } else {            
+            return false;
+        }
+    }
+    </script>
+    <apex:form id="theform">
+        <apex:pageBlock title="Account" id="theblock">
+            <apex:pageBlockSection id="theblocksection">
+                <apex:inputField value="{!Account.Name}" id="accName" />
+                <apex:inputField value="{!Account.Phone}" id="PhoneNo" />
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!Save}" value="Save" onclick="return myFunction();"  />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

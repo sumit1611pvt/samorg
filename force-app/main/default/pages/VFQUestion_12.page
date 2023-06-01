@@ -1,0 +1,12 @@
+<apex:page controller="AccountParentChildController">
+    <apex:pageBlock >
+        <apex:pageBlockTable value="{!accList}" var="acc">
+            <apex:column > 
+            <apex:outputText value="{!acc.Name}" />
+                </apex:column>
+        </apex:pageBlockTable>
+        <apex:outputPanel rendered="{!check}">
+            <apex:outputLabel value="No Parent Record" />
+        </apex:outputPanel>
+    </apex:pageBlock>
+</apex:page>

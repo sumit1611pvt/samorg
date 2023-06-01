@@ -1,0 +1,30 @@
+<apex:page controller="QQ9" sidebar="false" showHeader="false">
+    
+    <script>
+    function populateValue(setValue)
+    {
+        var parent = window.opener.document;
+        var targetField = parent.getElementById('{!$CurrentPage.parameters.fieldId}');
+        targetField.value = setValue;
+        self.close();
+    }
+    </script>
+    
+    <apex:form >
+        <apex:pageBlock title="Lookup Page">
+            Enter Account Name to search:&nbsp;&nbsp;<apex:inputText value="{!accSearch}"/>                 
+            <apex:commandButton action="{!search}" value="Search" reRender="tableData" />
+        </apex:pageBlock>
+        <apex:pageBlock title="Searched Results">
+            <apex:dataTable value="{!lstAccount}" var="acc" Id="tableData" border="1" cellpadding="10" style="margin:50px;">
+                <tr>
+                    <td style="text-align:center;">
+                        <apex:column headerValue="Account Name:">
+                            <apex:outputLink value="#" onclick="populateValue('{!acc.Name}')">{!acc.Name}</apex:outputLink>
+                        </apex:column>
+                    </td>
+                </tr>
+            </apex:dataTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

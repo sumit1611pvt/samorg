@@ -1,0 +1,29 @@
+<apex:page standardController="account" >
+    <apex:form >
+        
+        <apex:pageBlock >
+            <h1>
+                Account Details. 
+            </h1>
+            <apex:pageBlockSection >
+                <apex:outputField value="{!account.OwnerId}"></apex:outputField>
+                <apex:outputfield value="{!account.name}"><apex:inlineEditSupport event="ondblClick" /> </apex:outputfield>
+                <apex:outputfield value="{!account.phone}"><apex:inlineEditSupport event="ondblClick" /></apex:outputfield>
+                
+                <apex:outputfield value="{!account.ParentId}"><apex:inlineEditSupport event="ondblClick" /> </apex:outputfield>
+                <apex:outputfield value="{!account.AccountNumber}"><apex:inlineEditSupport event="ondblClick" /> </apex:outputfield>
+                <apex:outputfield value="{!account.Fax}"><apex:inlineEditSupport event="ondblClick" /> </apex:outputfield>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons > 
+                <apex:commandButton value="Edit" action="{!edit}" id="editButton" />
+                <apex:commandButton value="Save" action="{!save}" id="saveButton" />
+                <apex:commandButton value="Cancel" action="{!cancel}" id="cancelButton" />
+            </apex:pageBlockButtons> 
+        </apex:pageBlock>
+        
+    </apex:form>
+    <apex:relatedList list="Contacts"></apex:relatedList>
+    <apex:relatedList list="Opportunities"></apex:relatedList>
+    <apex:relatedList list="Cases"></apex:relatedList>
+   
+</apex:page>
